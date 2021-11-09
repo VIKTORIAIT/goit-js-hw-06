@@ -1,12 +1,13 @@
 const formInput = document.querySelector("input");
 formInput.addEventListener("blur", (event) => {
-  if (
-    event.currentTarget.value.length !== +formInput.getAttribute("data-length")
-  ) {
-    event.currentTarget.classList.add("invalid");
-    event.currentTarget.classList.remove("valid");
+  let evCurTar = event.currentTarget;
+  const toggleFunc = (a, b) => {
+    evCurTar.classList.add(a);
+    evCurTar.classList.remove(b);
+  };
+  if (evCurTar.value.length !== +formInput.getAttribute("data-length")) {
+    toggleFunc("invalid", "valid");
   } else {
-    event.currentTarget.classList.add("valid");
-    event.currentTarget.classList.remove("invalid");
+    toggleFunc("valid", "invalid");
   }
 });
